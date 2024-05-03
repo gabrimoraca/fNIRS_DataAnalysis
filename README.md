@@ -1,6 +1,6 @@
 # Análise dos dados da fNIRS
 <div style="text-align: justify;">
-    Os códigos foram desenvolvidos para analisar a resposta cortical hemodinâmica (alteração nas concentrações de Oxy e Desoxy-hemoglobina), mensuradas pelo dispositivo fNIRS modelo OctaMon de 8 canais (Artinis Medical Systems, Elst, The Netherlands). Se você estiver trabalhando com outros sistemas fNIRS, as rotinas deverão ser modificadas.
+    Os códigos foram desenvolvidos para analisar a resposta cortical hemodinâmica (alteração nas concentrações de Oxy e Desoxy-hemoglobina), mensuradas pelo dispositivo fNIRS modelo OctaMon de 8 canais (Artinis Medical Systems, Elst, The Netherlands). O projeo foi elaborado para funcionar com diferentes protocoloes de pesquisa. Entretanto, se você estiver trabalhando com outros sistemas fNIRS, as rotinas deverão ser modificadas.
     <br> 
     <br> 
     <b> Todos os códigos deste projeto devem estar na mesma pasta do seu computador! </b>
@@ -83,7 +83,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 - Como os arquivos contendo os eventos estão organizados no seu computador.
 - Se houve aplicação da estimulação transcraniana por corrente contínua (ETCC).
 - O diretório onde estão a rotina e as funções para plotar os dados.
-- Os diretórios para salvar os gráficos dos canais e da análise de cada condição e para salvar os os dados analisados.
+- Os diretórios para salvar os gráficos dos canais e da análise de cada condição e para salvar os dados analisados.
 
 ### Adicionando informações sobre a análise dos dados
 <div style="text-align: justify;">
@@ -95,7 +95,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 - Quantos segundos, imediatamente antes do término do baseline, serão excluídos da análise.
 - A duração do atraso fisiológico.
 - A duração total da tarefa realizada na coleta e dos janelamentos "Early" e "Late".
-- Quanto segundos, imediatamente antes do término da tarefa, seráo excluídos da análise.
+- Quanto segundos, imediatamente antes do término da tarefa, serão excluídos da análise.
 
 <div style="text-align: justify;">
     <blockquote>
@@ -178,7 +178,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 - Os desvios-padrão das séries temporais médias de cada condição.
 
 <div style="text-align: justify;">
-    - Ainda, os canais utilizados na análise também serão salvos no mesmo arquivo. No nome do arquivo, haverá a expressão "HD" (hemisfério direito) ou "HE" (hemisfério direito) caso a ETCC tenha sido aplicada em algum dos hemisférios.
+    - Ainda, os canais utilizados na análise também serão salvos no mesmo arquivo. No nome do arquivo, haverá a expressão "HD" (hemisfério direito) ou "HE" (hemisfério esquerdo) caso a ETCC tenha sido aplicada em algum dos hemisférios.
 </div>
 
 ## 4º Passo - Agrupar os resultados
