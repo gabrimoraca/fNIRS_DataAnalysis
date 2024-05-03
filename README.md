@@ -1,6 +1,6 @@
 # Análise dos dados da fNIRS
 <div style="text-align: justify;">
-    Os códigos foram desenvolvidos para analisar a resposta cortical hemodinâmica (alteração nas concentrações de Oxy e Desoxy-hemoglobina), mensuradas pelo dispositivo fNIRS modelo OctaMon de 8 canais (Artinis Medical Systems, Elst, The Netherlands). O projeo foi elaborado para funcionar com diferentes protocoloes de pesquisa. Entretanto, se você estiver trabalhando com outros sistemas fNIRS, as rotinas deverão ser modificadas.
+    Os códigos foram desenvolvidos para analisar a resposta cortical hemodinâmica (alteração nas concentrações de Oxy e Desoxy-hemoglobina), mensuradas pelo dispositivo fNIRS modelo OctaMon de 8 canais (Artinis Medical Systems, Elst, The Netherlands). O projeo foi elaborado para funcionar com diferentes protocolos de pesquisa. Entretanto, se você estiver trabalhando com outros sistemas fNIRS, as rotinas deverão ser modificadas.
     <br> 
     <br> 
     <b> Todos os códigos deste projeto devem estar na mesma pasta do seu computador! </b>
