@@ -129,7 +129,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 </div>
 <br>
 
-**Para cada condição experimental, a rotina irá executar os tarefas a seguir:**
+**Para cada condição experimental, a rotina irá executar as tarefas a seguir:**
 <div style="text-align: justify;">
     - Para cada tentativa, os dados do baseline e da tarefa serão agrupados em uma série temporal e o 1º valor será subtraído de todo o conjunto de dados.
     <br>
