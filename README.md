@@ -99,7 +99,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 
 <div style="text-align: justify;">
     <blockquote>
-        Imediatamente após o início do baseline e imediatamente após o início da tarefa, alguns segundos serão excluídos da análise. Este tempo é a duração do atraso fisiológico.
+        Imediatamente após o início do baseline e imediatamente após o início da tarefa, alguns segundos serão excluídos da análise. Este tempo excluído se refere ao atraso fisiológico.
     </blockquote>
 </div>
 
@@ -114,7 +114,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
     - Os gráficos serão salvos com a extensão <code>.fig</code>, permitindo a edição posterior caso necessário. Estes gráficos representam o comportamento da Oxy e da Desoxy durante todo o tempo de coleta (exemplo abaixo).
     <br> 
     <br>
-    <img align="center" alt="Canais da fNIRS" src="DP01_Dia1_Pré_Right_Channels.png">
+    <img align="center" alt="Canais da fNIRS" src="Right_Channels.png">
 </div>
 
 <!-- ![Canais da fNIRS](DP01_Dia1_Pré_Right_Channels.png)-->
