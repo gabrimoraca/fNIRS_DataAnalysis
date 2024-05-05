@@ -2,11 +2,14 @@
 % Desenvolvedor: Gabriel Antonio Gazziero Moraca
 % Abril de 2024
 
-function fNIRSplots_ConditionsData(freq,name_arq,name_cond_atual,path_figure,mean_epoch_all,std_epoch_all)
+function fNIRSplots_ConditionsData(freq,baseline,name_arq,name_cond_atual,path_figure,mean_epoch_all,std_epoch_all)
 
 % Criando o vetor de tempo em segundos
 time_epoch = (1:length(mean_epoch_all))./freq; % neste caso, "length" retorna o nº de linhas de "mean_epoch_all"; "./" divide cada frame por "freq" para passar para segundos
 time_epoch = time_epoch'; % ' Transpõe para tornar "time_epoch" uma coluna
+
+% Definindo o início da tarefa
+inicio = baseline/10;
 
 % Inicializando matrizes vazias para armazenar a dispersão dos dados
 [~,n_colunas] = size(std_epoch_all); % "size" retorna um vetor com o nº de linhas (parâmetro 1) e de colunas (parâmetro 2); "~" usado para não retornar o nº de linhas
@@ -48,14 +51,14 @@ for i = 1:4
     xlim([0 max(time_epoch)])
     ylim([-2 3])
     yL = get(gca,'YLim');
-    line([20 20],yL,'LineStyle','--','Color','k','LineWidth', 1)
+    line([inicio inicio],yL,'LineStyle','--','Color','k','LineWidth', 1)
     xL = xlim();
     plot(xL,[0, 0],'LineStyle',':','Color','k')
-    xt = 9;
+    xt = inicio - 11;
     yt = 2.5;
     txt1 = 'Baseline';
     text(xt,yt,txt1);
-    xt2 = 33;
+    xt2 = inicio + 13;
     txt2 = 'Tarefa';
     text(xt2,yt,txt2);
 end  
@@ -91,14 +94,14 @@ for i = 1:2
     xlim([0 max(time_epoch)])
     ylim([-2 3])
     yL = get(gca,'YLim');
-    line([20 20],yL,'LineStyle','--','Color','k','LineWidth', 1)
+    line([inicio inicio],yL,'LineStyle','--','Color','k','LineWidth', 1)
     xL = xlim();
     plot(xL,[0, 0],'LineStyle',':','Color','k')
-    xt = 9;
+    xt = inicio - 11;
     yt = 2.5;
     txt1 = 'Baseline';
     text(xt,yt,txt1);
-    xt2 = 33;
+    xt2 = inicio + 13;
     txt2 = 'Tarefa';
     text(xt2,yt,txt2);
 end               

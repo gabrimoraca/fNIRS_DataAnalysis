@@ -1,21 +1,21 @@
 # Análise dos dados da fNIRS
 <div style="text-align: justify;">
-    Os códigos foram desenvolvidos para analisar a resposta cortical hemodinâmica (alteração nas concentrações de Oxy e Desoxy-hemoglobina), mensuradas pelo dispositivo fNIRS modelo OctaMon de 8 canais (Artinis Medical Systems, Elst, The Netherlands). O projeo foi elaborado para funcionar com diferentes protocolos de pesquisa. Entretanto, se você estiver trabalhando com outros sistemas fNIRS, as rotinas deverão ser modificadas.
+    Os códigos foram desenvolvidos para analisar a resposta cortical hemodinâmica (alteração nas concentrações de Oxy e Desoxy-hemoglobina), mensuradas pelo dispositivo fNIRS modelo OctaMon de 8 canais (Artinis Medical Systems, Elst, The Netherlands). O projeto foi elaborado para funcionar com diferentes protocolos de pesquisa. Entretanto, se você estiver trabalhando com outros sistemas fNIRS, as rotinas deverão ser modificadas.
     <br> 
     <br> 
     <b> Todos os códigos deste projeto devem estar na mesma pasta do seu computador! </b>
 </div>
 
 ## Desenvolvedor 
-Prof. Me. Gabriel Antonio Gazziero Moraca
+Gabriel Antonio Gazziero Moraca
 
 ## 1º Passo - Encontrar os eventos da coleta
 <div style="text-align: justify;">
     A aquisição e armazenamento dos dados é realizada por meio do software OxySoft. Após coletar os dados, realize os procedimentos abaixo:
 </div>
 
-- Exporte os dados em arquivos Excel;
-- Exclua o cabeçalho, os valores discrepantes iniciais e a 1ª coluna (frames);
+- Exporte os dados em arquivos Excel.
+- Exclua o cabeçalho, os valores discrepantes iniciais e a 1ª coluna (frames).
 - Digite "**a**" na 1ª linha da coluna que contém os eventos da coleta.
 
 <div style="text-align: justify;">
@@ -54,7 +54,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 
 ## 2º Passo - Correção de artefatos e filtragem
 <div style="text-align: justify;">
-    Para aplicar procedimentos de correção de artefatos e filtragem dos dados, será necessário utilizar o software open-source <b>NIRS-SPM</b> (toolbox do MatLab). Os arquivos gerados no passo anterior serão utilizados neste 2º passo da análise. Abaixo há links para o software e para artigos que explicam o pré-processamento dos sinais.
+    Para aplicar procedimentos de correção de artefatos (ruídos) e filtragem dos dados, será necessário utilizar o software open-source <b>NIRS-SPM</b> (toolbox do MatLab). Os arquivos gerados no passo anterior serão utilizados neste 2º passo da análise. Abaixo há links para o software e para artigos que explicam o pré-processamento dos sinais.
 </div> <br>
 
 - Software: [NIRS-SPM](http://www.fil.ion.ucl.ac.uk/spm/software/)
@@ -65,7 +65,15 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 
 ## 3º Passo - Cálculo da mudança relativa da atividade cortical
 <div style="text-align: justify;">
-    Após encontrar os eventos e e processar os dados no NIRS-SPM, rode o arquivo <code>fNIRS_Analysis.m</code> no MatLab. Os arquivos <code>fNIRSplots_Channels.m</code> e <code>fNIRSplots_ConditionsData.m</code> são funções que serão utilizadas para plotar os dados ao longa da análise. Em resumo, esta rotina executa as seguintes etapas:
+    Após encontrar os eventos e e processar os dados no NIRS-SPM, rode o arquivo <code>fNIRS_Analysis.m</code> no MatLab. Os dados serão analisados em 3 janelamentos:
+</div>
+
+- Total (considerando a duração completa da tarefa).
+- Inicial (Early - considerando a 1ª metade da tarefa).
+- Tardio (Late - considerando a 2º metade da tarefa).
+
+<div style="text-align: justify;">
+     Os arquivos <code>fNIRSplots_Channels.m</code> e <code>fNIRSplots_ConditionsData.m</code> são funções que serão utilizadas para plotar os dados ao longa da análise. Em resumo, esta rotina executa as seguintes etapas:
 </div>
 
 ### Exibindo instruções ao usuário
@@ -94,12 +102,12 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 - A duração total do baseline realizado na coleta.
 - Quantos segundos, imediatamente antes do término do baseline, serão excluídos da análise.
 - A duração do atraso fisiológico.
-- A duração total da tarefa realizada na coleta e dos janelamentos "Early" e "Late".
+- A duração total da tarefa realizada na coleta e dos janelamentos Early e Late.
 - Quanto segundos, imediatamente antes do término da tarefa, serão excluídos da análise.
 
 <div style="text-align: justify;">
     <blockquote>
-        Imediatamente após o início do baseline e imediatamente após o início da tarefa, alguns segundos serão excluídos da análise. Este tempo excluído se refere ao atraso fisiológico.
+        Imediatamente após o início do baseline e logo após o início da tarefa, alguns segundos serão excluídos da análise. Este tempo excluído se refere ao atraso fisiológico.
     </blockquote>
 </div>
 
@@ -140,7 +148,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
     <br> 
     - Como anteriormente, os gráficos também serão salvos com a extensão <code>.fig</code>, para permitir edição futura.
     <br> 
-    - Exemplo abaixo demonstra a Oxy do hemisfério direito (as linhas finas representam os desvios-padrão).
+    - Exemplo abaixo demonstra a Oxy do hemisfério direito (as linhas finas são os desvios-padrão).
 </div>
 
 <div style="text-align: center">
@@ -157,11 +165,9 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 
 <div style="text-align: justify;">
     <br>
-    - A linha pontilhada indica o início da tarefa. Para ajustar a posição deste objeto conforme o seu protocolo, acesse o arquivo <code>fNIRSplots_ConditonsData</code> e modifique os valores das linhas 58 e 101.
+    - Se no seu protocolo houve um evento baseline, não serão observados desvios-padrão na parte do gráfico referente ao baseline, pois todas as tentativas compartilharam o mesmo baseline.
     <br>
-    - Se no seu protocolo houve um evento baseline, não serão observados desvios-padrão na parte do gráfico referente ao baseline, pois todas as tentativas compartilharam o mesmo baseline (a média das tentivas será o próprio baseline).
-    <br>
-    - Na sequência, partes do sinal do baseline e da tarefa serão excluídos (de acordo com o que você definiu no início da análise) e as médias do baseline e da tarefa (para cada janelamento) em cada série temporal média serão computadas.
+    - Na sequência, partes do sinal do baseline e da tarefa serão excluídos (definido no início da análise) e as médias do baseline e da tarefa (para cada janelamento) em cada série temporal média serão computadas.
     <br>
     - Por fim, será calculada a <b>mudança relativa da atividade cortical (tarefa - baseline)</b> para cada variável (6) em cada janelamento (3).
 </div>
@@ -178,7 +184,7 @@ Prof. Me. Gabriel Antonio Gazziero Moraca
 - Os desvios-padrão das séries temporais médias de cada condição.
 
 <div style="text-align: justify;">
-    - Ainda, os canais utilizados na análise também serão salvos no mesmo arquivo. No nome do arquivo, haverá a expressão "HD" (hemisfério direito) ou "HE" (hemisfério esquerdo) caso a ETCC tenha sido aplicada em algum dos hemisférios.
+    - Ainda, os canais utilizados na análise também serão salvos no mesmo arquivo. No nome do arquivo, haverá a string "HD" (hemisfério direito) ou "HE" (hemisfério esquerdo) caso a ETCC tenha sido aplicada em algum dos hemisférios.
 </div>
 
 ## 4º Passo - Agrupar os resultados

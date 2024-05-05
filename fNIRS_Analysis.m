@@ -413,7 +413,7 @@ for narq = 1:length(arquivos)
         std_epoch_final{z} = std_epoch_all;
 
         % Plotando os dados por hemisfério e combinados
-        fNIRSplots_ConditionsData(freq,name_arq,name_cond_atual,path_figure,mean_epoch_all,std_epoch_all)
+        fNIRSplots_ConditionsData(freq,baseline,name_arq,name_cond_atual,path_figure,mean_epoch_all,std_epoch_all)
 
         % Selecionando o período baseline
         periodo_baseline = mean_epoch_all(1 + atraso_fisiologico:baseline - baseline_correction,:); % Excluindo atraso fisiológico e antecipação a tarefa
