@@ -73,7 +73,7 @@ Gabriel Antonio Gazziero Moraca
 - Tardio (Late - considerando a 2º metade da tarefa).
 
 <div style="text-align: justify;">
-     Os arquivos <code>fNIRSplots_Channels.m</code> e <code>fNIRSplots_ConditionsData.m</code> são funções que serão utilizadas para plotar os dados ao longa da análise. Em resumo, esta rotina executa as seguintes etapas:
+     Os arquivos <code>fNIRSplots_Channels.m</code> e <code>fNIRSplots_ConditionsData.m</code> são funções que serão utilizadas para plotar os dados ao longo da análise. Em resumo, esta rotina executa as seguintes etapas:
 </div>
 
 ### Exibindo instruções ao usuário
