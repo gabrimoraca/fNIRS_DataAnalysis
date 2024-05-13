@@ -4,22 +4,18 @@
 
 %% Instruções ao usuário
 clear; clc
-disp('Antes de rodar esta rotina, execute as tarefas descritas abaixo:')
-disp(' ')
-disp('1) Abra o arquivo ".txt", que foi exportado do Oxysoft, e copie/cole os dados em um arquivo Excel.')
-disp('2) No arquivo Excel, exclua o cabeçalho, bem como as primeiras linhas dos dados do NIRS (valores altos).')
-disp('3) Exclua a coluna do tempo/frames (1ª coluna) e a do Portasync, se existir (coluna de zeros - O).')
-disp('4) Na coluna de eventos (coluna 17), adicione a letra "a" na primeira linha.')
-disp('5) Verifique se todos os eventos (letras) aparecem na coluna e se estão na sequência realizada durante a coleta.')
-disp('6) Salve o arquivo em ".xlsx".')
-disp(' ')
-disp('- Se em algum arquivo a letra "a" não aparecer, você precisará arrumar o arquivo Excel.')
-disp('- A rotina irá salvar os eventos de cada condição em um único arquivo ".mat".')
-disp('- Considere o baseline como uma condição experimental, caso exista evento(s) para este período.')
-disp('- Além disso, os dados numéricos do Excel (Oxy e Desoxy) serão salvos em um novo arquivo ".txt".')
-disp('- Ambos os arquivos serão utilizados no processamento dos dados no NIRS-SPM.')
-disp(' ')
-disp('Pressione ENTER para iniciar a análise.')
+instructions = char({'Antes de rodar esta rotina, execute as tarefas descritas abaixo:';' ';...
+    '1) Abra o arquivo ".txt", que foi exportado do Oxysoft, e copie/cole os dados em um arquivo Excel.';...
+    '2) No arquivo Excel, exclua o cabeçalho, bem como as primeiras linhas dos dados do NIRS (valores altos).';...
+    '3) Exclua a coluna do tempo/frames (1ª coluna) e a do Portasync, se existir (coluna de zeros - O).';...
+    '4) Na coluna de eventos (coluna 17), adicione a letra "a" na primeira linha.';...
+    '5) Verifique se todos os eventos (letras) aparecem na coluna e se estão na sequência realizada durante a coleta.';...
+    '6) Salve o arquivo em ".xlsx".';' ';'- Se em algum arquivo a letra "a" não aparecer, você precisará arrumar o arquivo Excel.';...
+    '- A rotina irá salvar os eventos de cada condição em um único arquivo ".mat".';...
+    '- Considere o baseline como uma condição experimental, caso exista evento(s) para este período.';...
+    '- Além disso, os dados numéricos do Excel (Oxy e Desoxy) serão salvos em um novo arquivo ".txt".';...
+    '- Ambos os arquivos serão utilizados no processamento dos dados no NIRS-SPM.';' ';'Pressione ENTER para iniciar a análise.';}); % "char" converte a célula em uma matriz de caracteres
+disp(instructions)
 pause
 clc
 
@@ -160,8 +156,7 @@ while continua == "Sim"
         end
         
         letra_conf = [name_arq linha1 a];
-        disp(letra_conf);
-        disp(' ')
+        disp(char({letra_conf;' '}))
 
         clearvars filename txt everything n_colunas col_eventos linha1 a letra_conf
 
@@ -204,8 +199,7 @@ while continua == "Sim"
         
         % Abrindo o diretório onde os dados serão salvos
         cd(path_save)
-        disp(' ')
-        disp('Salvando os dados...')
+        disp(char({' ';'Salvando os dados...'}))
         pause(1)
 
         % Inicializando uma estrutura de dados vazia para armazenar todos os eventos
@@ -228,9 +222,7 @@ while continua == "Sim"
     
         % Retornando ao diretório que contém os arquivos
         % Necessário para a rotina encontrar o próximo arquivo a ser analisado
-        disp(' ')
-        disp('Próximo arquivo...')
-        disp(' ')
+        disp(char({' ';'Próximo arquivo...';' '}))
         cd(path_analise)    
     end
 
@@ -241,5 +233,4 @@ end
 
 cd(path_save)
 clear; clc
-disp ('Os eventos da fNIRS foram encontrados.');
-disp ('OBRIGADO PELA COLABORAÇÃO!');
+disp(char({'Os eventos da fNIRS foram encontrados.';'OBRIGADO PELA COLABORAÇÃO!'}))

@@ -4,26 +4,22 @@
 
 %% Instruções ao usuário
 clear; clc
-disp('Antes de começar a análise, se atende aos itens abaixo:')
-disp(' ')
-disp('- Os eventos de interesse devem ter sido encontrados por meio da rotina "fNIRS_Find_Eventos.m".')
-disp('- Os dados devem ter sido processados e filtrados CORRETAMENTE no NIRS-SPM.')
-disp('- Os arquivos "fNIRSplots_Channels.m" e "fNIRSplots_ConditionsData.m" são funções que servem para plotar os dados.')
-disp('- Esta rotina e as funções que plotam os dados DEVEM estar no mesmo diretório. ')
-disp('- Os dados serão analisados em 3 janelamentos: "Early", "Late" e "Total".')
-disp('- Serão criadas figuras para cada condição experimental, crie diretórios para salvá-las.')
-disp('- Nunca digite números por extenso (um, dois...) quando for solicitada a entrada de valores.')
-disp('- Use abreviações para nomear as condições experimentais (AR - andar rápido; TD - tarefa dupla, etc).')
-disp('- Por fim, você deve saber, previamente:')
-disp('1) Os canais 1-4 são do hemisfério direito e os canais 5-8 são do hesmifério esquerdo.')
-disp('2) A quantidade de condições experimentais.')
-disp('3) Os eventos de cada condição e do baseline (se houver).')
-disp('4) A duração total dos períodos baseline e tarefa.')
-disp('5) A duração da tarefa em cada janelamento.')
-disp('6) Quanto tempo do baseline e da tarefa serão excluídos e analisados.');
-disp('7) Qual foi o hemisfério estimulado em cada participante, se houve aplicação da ETCC em apenas um hemisfério.')
-disp(' ')
-disp('Pressione ENTER para iniciar a análise.')
+instructions = char({'Antes de começar a análise, se atende aos itens abaixo:';' ';...
+    '- Os eventos de interesse devem ter sido encontrados por meio da rotina "fNIRS_Find_Eventos.m".';...
+    '- Os dados devem ter sido processados e filtrados CORRETAMENTE no NIRS-SPM.';...
+    '- Os arquivos "fNIRSplots_Channels.m" e "fNIRSplots_ConditionsData.m" são funções que servem para plotar os dados.';...
+    '- Esta rotina e as funções que plotam os dados DEVEM estar no mesmo diretório. ';...
+    '- Os dados serão analisados em 3 janelamentos: "Early", "Late" e "Total".';...
+    '- Serão criadas figuras para cada condição experimental, crie diretórios para salvá-las.';...
+    '- Nunca digite números por extenso (um, dois...) quando for solicitada a entrada de valores.';...
+    '- Use abreviações para nomear as condições experimentais (AR - andar rápido; TD - tarefa dupla, etc).';...
+    '- Por fim, você deve saber, previamente:';'1) Os canais 1-4 são do hemisfério direito e os canais 5-8 são do hesmifério esquerdo.';...
+    '2) A quantidade de condições experimentais.';'3) Os eventos de cada condição e do baseline (se houver).';...
+    '4) A duração total dos períodos baseline e tarefa.';'5) A duração da tarefa em cada janelamento.';...
+    '6) Quanto tempo do baseline e da tarefa serão excluídos e analisados.';...
+    '7) Qual foi o hemisfério estimulado em cada participante, se houve aplicação da ETCC em apenas um hemisfério.';' ';...
+    'Pressione ENTER para iniciar a análise.'}); % "char" converte a célula em uma matriz de caracteres
+disp(instructions)
 pause
 clc
 
@@ -118,7 +114,7 @@ path_channels = paths{end-2};
 path_analise = paths{end-1};
 path_save = paths{end};
 
-clearvars questions_protocol protocol1 protocol2 prompt1 prompt2 options questions_eventos prompt questions_figures questions_channels_data questions_paths paths cond
+clearvars instructions questions_protocol protocol1 protocol2 prompt1 prompt2 options questions_eventos prompt questions_figures questions_channels_data questions_paths paths cond
 
 %% Adicionando informações para analisar os dados da fNIRS
 
@@ -272,12 +268,11 @@ for narq = 1:length(arquivos)
         evento_min = (min(eventos_matriz))-baseline; % Pega o menor valor de "eventos" (que é o 1º evento da coleta) e subtrai X frames
     end
 
-    disp(' ')
-    disp('A seguir serão plotados os gráficos separados por canais, verifique os sinais.')
-    disp('Se algum canal estiver ruim, fora os que já foram identificados, você deve excluí-lo.')
-    disp('Pressione "ENTER" para continuar e após a inspeção de cada figura.')
+    instructions_channels = char({' ';'A seguir serão plotados os gráficos separados por canais, verifique os sinais.';...
+        'Se algum canal estiver ruim, fora os que já foram identificados, você deve excluí-lo.';...
+        'Pressione "ENTER" para continuar e após a inspeção de cada figura.';' '});    
+    disp(instructions_channels)
     pause
-    disp(' ')
 
     % Plotando os dados dos 4 canais para cada hemisfério
     fNIRSplots_Channels(freq,name_arq,data_oxy,data_des,evento_min,path_channels)
@@ -452,8 +447,7 @@ for narq = 1:length(arquivos)
 
     % Abrindo o diretório onde os resultados serão salvos
     cd(path_save)
-    disp(' ')
-    disp('Salvando os dados...')
+    disp(char({' ';'Salvando os dados...'}))
     pause(1)
 
     % Agrupando horizontalmente os dados de todas as condições
@@ -490,13 +484,10 @@ for narq = 1:length(arquivos)
     save(name_arq_results,'fNIRS_Results');   
   
     % Retornando ao diretório que contém os arquivos (necessário para a rotina encontrar o próximo arquivo para análise)
-    disp(' ')
-    disp('Próximo participante...')
-    disp(' ')
+    disp(char({' ';'Próximo participante...';' '}))
     cd(path_analise)    
 end
 
 cd(path_save)
 clear; clc
-disp ('Fim da análise da fNIRS!!!');
-disp ('OBRIGADO PELA COLABORAÇÃO!');
+disp(char({'Fim da análise da fNIRS!!!';'OBRIGADO PELA COLABORAÇÃO!'}))

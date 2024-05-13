@@ -4,18 +4,16 @@
 
 %% Instruções ao usuário
 clear; clc
-disp('Para a rotina funcionar corretamente, se atente aos pontos abaixo:')
-disp(' ')
-disp('1) Os dados da fNIRS devem ter sido analisados por meio da rotina "fNIRS_Analysis.m".')
-disp('2) Todos os dados, previamente analisados, devem estar em uma única pasta, independente do número de grupos.')
-disp('3) A rotina agrupará os dados de acordo com as condições e janelamento de interesse, salvando-os em arquivos Excel.')
-disp('4) É essencial saber a quantidade e os nomes das condições experimentais, momentos de avaliação e intervenções aplicadas.')
-disp('5) Nunca digite números por extenso (um, dois...) quando for solicitada a entrada de valores.')
-disp('6) Use abreviações para nomear as condições experimentais (AR - andar rápido; TD - tarefa dupla, etc).')
-disp('7) Se não houve intervenção no estudo, deixe em o branco o campo que nomeia a intervenção.')
-disp('8) Se houve somente 1 momento de avaliação, deixe em o branco o campo que nomeia o momento.')
-disp(' ')
-disp('Pressione ENTER para iniciar a análise.')
+instructions = char({'Para a rotina funcionar corretamente, se atente aos pontos abaixo:';' ';...
+    '1) Os dados da fNIRS devem ter sido analisados por meio da rotina "fNIRS_Analysis.m".';...
+    '2) Todos os dados, previamente analisados, devem estar em uma única pasta, independente do número de grupos.';...
+    '3) A rotina agrupará os dados de acordo com as condições e janelamento de interesse, salvando-os em arquivos Excel.';...
+    '4) É essencial saber a quantidade e os nomes das condições experimentais, momentos de avaliação e intervenções aplicadas.';...
+    '5) Nunca digite números por extenso (um, dois...) quando for solicitada a entrada de valores.';...
+    '6) Use abreviações para nomear as condições experimentais (AR - andar rápido; TD - tarefa dupla, etc).';...
+    '7) Se não houve intervenção no estudo, deixe em o branco o campo que nomeia a intervenção.';...
+    '8) Se houve somente 1 momento de avaliação, deixe em o branco o campo que nomeia o momento.';' ';'Pressione ENTER para iniciar a análise.';}); % "char" converte a célula em uma matriz de caracteres
+disp(instructions)
 pause
 clc
 
@@ -335,8 +333,7 @@ for w = 1:numel(conditions)
 end
 
 % Salvando os dados em arquivos Excel
-disp(' ')
-disp('Salvando os dados agrupados...')
+disp(char({' ';'Salvando os dados agrupados...'}))
 pause(1)
 
 for x = 1:numel(conditions)
@@ -355,5 +352,4 @@ for x = 1:numel(conditions)
 end
 
 clear; clc
-disp ('Acabou!! Os resultados da fNIRS foram agrupados.');
-disp ('OBRIGADO PELA COLABORAÇÃO!')
+disp(char({'Acabou!! Os resultados da fNIRS foram agrupados.';'OBRIGADO PELA COLABORAÇÃO!'}))
